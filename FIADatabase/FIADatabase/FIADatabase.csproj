@@ -127,6 +127,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\FIAUsers\Controllers\UsersController.cs" />
+    <Compile Include="Areas\FIAUsers\FIAUsersAreaRegistration.cs" />
+    <Compile Include="Areas\FIAUsers\Models\User.cs" />
+    <Compile Include="Contexts\FIAUsersContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +163,15 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\FIAUsers\Views\web.config" />
+    <Content Include="Areas\FIAUsers\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Users\Create.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Users\Delete.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Users\Details.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Users\Index.cshtml" />
+    <Content Include="Areas\FIAUsers\Views\Users\Login.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -187,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\FIAUsers\Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
