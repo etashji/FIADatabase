@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FIADatabase.Areas.FIANCFiles.Modules;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace FIADatabase.Contexts
         }
 
         public System.Data.Entity.DbSet<FIADatabase.Areas.FIANCFiles.Modules.HVI> HVIs { get; set; }
+        public DbSet<Prologue> Prologues { get; set; }
     }
 }
