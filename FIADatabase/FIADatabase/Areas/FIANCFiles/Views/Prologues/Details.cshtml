@@ -1,0 +1,118 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.Prologue
+@using FIADatabase.Contexts;
+@using FIADatabase.Areas.FIANCFiles.Modules;
+
+@functions
+{
+    private FIANCFilesContext db = new FIANCFilesContext();
+    
+}
+
+@{
+    bool isLoggedIn = true;
+    if (string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+
+    bool hasNext = db.Prologues.Any(s => s.orderNumber == Model.orderNumber + 1);
+    bool hasPrev = db.Prologues.Any(s => s.orderNumber == Model.orderNumber - 1);
+}
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Prologue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        @if (Model.areaMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.areaMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" />
+            </dd>
+        }
+
+        @if (Model.districtMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.districtMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" />
+            </dd>
+        }
+        @if (Model.bureauMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.bureauMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" />
+            </dd>
+        }
+        @if (Model.localMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.localMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Briefing)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Briefing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video)
+        </dt>
+
+        <dd>
+            <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AAR)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.AAR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{
+        if (isLoggedIn)
+        {
+            @Html.ActionLink("Edit ", "Edit", new { id = Model.prologueId })
+        }
+        if (hasPrev)
+        {
+            Prologue prev = db.Prologues.FirstOrDefault(s => s.orderNumber == Model.orderNumber - 1);
+            @Html.ActionLink("Previous ", "Details", new { id = prev.prologueId })
+        }
+        if (hasNext)
+        {
+            Prologue next = db.Prologues.FirstOrDefault(s => s.orderNumber == Model.orderNumber + 1);
+            @Html.ActionLink("Next", "Details", new { id = next.prologueId })
+        }
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

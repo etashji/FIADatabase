@@ -1,0 +1,127 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.Prologue
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Prologue</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.prologueId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.orderNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.orderNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.orderNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.areaMap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (Model.areaMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" />
+                }
+                <input type="file" name="file1" id="file1" />
+                @Html.HiddenFor(model => model.areaMap)
+                @Html.ValidationMessageFor(model => model.areaMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.districtMap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (Model.districtMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" />
+                }
+                <input type="file" name="file2" id="file2" />
+                @Html.HiddenFor(model => model.districtMap)
+                @Html.ValidationMessageFor(model => model.districtMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bureauMap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (Model.bureauMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" />
+                }
+                <input type="file" name="file3" id="file3" />
+                @Html.HiddenFor(model => model.bureauMap)
+                @Html.ValidationMessageFor(model => model.bureauMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.localMap, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (Model.localMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" />
+                }
+                <input type="file" name="file4" id="file4" />
+                @Html.HiddenFor(model => model.localMap)
+                @Html.ValidationMessageFor(model => model.localMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Briefing, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EJS().RichTextEditorFor(model => model.Briefing).Render()
+                @Html.ValidationMessageFor(model => model.Briefing, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control" } })
+                @if (Model.Video != null) 
+                { 
+                    <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                }
+                @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AAR, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EJS().RichTextEditorFor(model => model.AAR).Render()
+                @Html.ValidationMessageFor(model => model.AAR, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

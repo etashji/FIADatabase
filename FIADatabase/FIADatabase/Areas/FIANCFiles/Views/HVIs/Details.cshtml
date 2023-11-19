@@ -4,6 +4,14 @@
     ViewBag.Title = "Details";
 }
 
+@{
+    bool isLoggedIn = true;
+    if (string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+}
+
 <h2>Details</h2>
 
 <div>
@@ -64,6 +72,11 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.HVIId }) |
+    @{
+        if (isLoggedIn)
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.HVIId })
+        }
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
