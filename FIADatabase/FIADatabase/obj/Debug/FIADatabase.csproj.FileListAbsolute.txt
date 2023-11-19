@@ -81,3 +81,6 @@ F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.cs
 F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.csproj.CopyComplete
 F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.dll
 F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.pdb
+F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\bin\Syncfusion.EJ2.dll
+F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\bin\Syncfusion.Licensing.dll
+F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\bin\Syncfusion.EJ2.xml
