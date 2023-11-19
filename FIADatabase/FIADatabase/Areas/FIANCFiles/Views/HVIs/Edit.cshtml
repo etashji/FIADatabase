@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Edit", "HVIs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>HVI</h4>
         <hr />
@@ -24,6 +24,7 @@
                     <img src="data:image;base64, @System.Convert.ToBase64String(Model.Portrait)" />
                 }
                 <input type="file" name="file1" id="file1" />
+                @Html.HiddenFor(model => model.Portrait)
                 @Html.ValidationMessageFor(model => model.Portrait, "", new { @class = "text-danger" })
             </div>
         </div>

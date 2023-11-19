@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FIADatabase.Areas.FIANCFiles.Modules.Prologue>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    bool isLoggedIn = true;
+    if (string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+}
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @{
+                    if (isLoggedIn)
+                    {
+                        @Html.ActionLink("Edit ", "Edit", new { id = item.prologueId })
+                        @Html.ActionLink("Delete ", "Delete", new { id = item.prologueId })
+                    }
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.prologueId }) 
+
+            </td>
+        </tr>
+    }
+
+</table>

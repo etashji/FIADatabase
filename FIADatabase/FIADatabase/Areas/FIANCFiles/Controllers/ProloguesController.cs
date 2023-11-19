@@ -1,71 +1,86 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using FIADatabase.Areas.FIANCFiles.Modules;
 using FIADatabase.Contexts;
-using Syncfusion.EJ2.RichTextEditor;
+using static System.Net.WebRequestMethods;
 
 namespace FIADatabase.Areas.FIANCFiles.Controllers
 {
-    public class HVIsController : Controller
+    public class ProloguesController : Controller
     {
         private FIANCFilesContext db = new FIANCFilesContext();
 
-        // GET: FIANCFiles/HVIs
+        // GET: FIANCFiles/Prologues
         public ActionResult Index()
         {
-            return View(db.HVIs.OrderBy(s => s.lastName).ToList());
+            return View(db.Prologues.OrderBy(s => s.orderNumber).ToList());
         }
 
-        // GET: FIANCFiles/HVIs/Details/5
+        // GET: FIANCFiles/Prologues/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HVI hVI = db.HVIs.Find(id);
-            if (hVI == null)
+            Prologue prologue = db.Prologues.Find(id);
+            if (prologue == null)
             {
                 return HttpNotFound();
             }
-            return View(hVI);
+            return View(prologue);
         }
 
-        // GET: FIANCFiles/HVIs/Create
+        // GET: FIANCFiles/Prologues/Create
         [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: FIANCFiles/HVIs/Create
+        // POST: FIANCFiles/Prologues/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "HVIId,Portrait,lastName,firstName,Alias,DateofBirth,Bio")] HVI hVI, HttpPostedFileBase file1)
+        public ActionResult Create([Bind(Include = "prologueId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] Prologue prologue, 
+            HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
-            if (file1 != null)
+            if (file1 != null) 
             {
-                hVI.Portrait = ImageToByteArray(file1);
+                prologue.areaMap = ImageToByteArray(file1);
+            }
+            if (file2 != null)
+            {
+                prologue.districtMap = ImageToByteArray(file2);
+            }
+            if (file3 != null)
+            {
+                prologue.bureauMap = ImageToByteArray(file3);
+            }
+            if (file4 != null)
+            {
+                prologue.localMap = ImageToByteArray(file4);
             }
             if (ModelState.IsValid)
             {
-                db.HVIs.Add(hVI);
+                db.Prologues.Add(prologue);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(hVI);
+            return View(prologue);
         }
 
-        // GET: FIANCFiles/HVIs/Edit/5
+        // GET: FIANCFiles/Prologues/Edit/5
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -73,36 +88,49 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HVI hVI = db.HVIs.Find(id);
-            if (hVI == null)
+            Prologue prologue = db.Prologues.Find(id);
+            if (prologue == null)
             {
                 return HttpNotFound();
             }
-            return View(hVI);
+            return View(prologue);
         }
 
-        // POST: FIANCFiles/HVIs/Edit/5
+        // POST: FIANCFiles/Prologues/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "HVIId,Portrait,lastName,firstName,Alias,DateofBirth,Bio")] HVI hVI, HttpPostedFileBase file1)
+        public ActionResult Edit([Bind(Include = "prologueId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] Prologue prologue, 
+            HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
+            if (file1 != null)
+            {
+                prologue.areaMap = ImageToByteArray(file1);
+            }
+            if (file2 != null)
+            {
+                prologue.districtMap = ImageToByteArray(file2);
+            }
+            if (file3 != null)
+            {
+                prologue.bureauMap = ImageToByteArray(file3);
+            }
+            if (file4 != null)
+            {
+                prologue.localMap = ImageToByteArray(file4);
+            }
             if (ModelState.IsValid)
             {
-                if (file1 != null)
-                {
-                    hVI.Portrait = ImageToByteArray(file1);
-                }
-                db.Entry(hVI).State = EntityState.Modified;
+                db.Entry(prologue).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(hVI);
+            return View(prologue);
         }
 
-        // GET: FIANCFiles/HVIs/Delete/5
+        // GET: FIANCFiles/Prologues/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
         {
@@ -110,30 +138,24 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            HVI hVI = db.HVIs.Find(id);
-            if (hVI == null)
+            Prologue prologue = db.Prologues.Find(id);
+            if (prologue == null)
             {
                 return HttpNotFound();
             }
-            return View(hVI);
+            return View(prologue);
         }
 
-        // POST: FIANCFiles/HVIs/Delete/5
+        // POST: FIANCFiles/Prologues/Delete/5
         [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            HVI hVI = db.HVIs.Find(id);
-            db.HVIs.Remove(hVI);
+            Prologue prologue = db.Prologues.Find(id);
+            db.Prologues.Remove(prologue);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        public ActionResult Signout()
-        {
-            FormsAuthentication.SignOut();
-            return Redirect("/Home/Index");
         }
 
         public byte[] ImageToByteArray(HttpPostedFileBase imageIn)

@@ -1,0 +1,90 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.Prologue
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Prologue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        @if (Model.areaMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.areaMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" />
+            </dd>
+        }
+
+        @if (Model.districtMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.districtMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" />
+            </dd>
+        }
+        @if (Model.bureauMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.bureauMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" />
+            </dd>
+        }
+        @if (Model.localMap != null)
+        {
+            <dt>@Html.DisplayNameFor(model => model.localMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" />
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Briefing)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Briefing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Video)
+        </dt>
+
+        <dd>
+            <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AAR)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.AAR)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
