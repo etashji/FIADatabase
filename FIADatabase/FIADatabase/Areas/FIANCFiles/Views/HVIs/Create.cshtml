@@ -4,74 +4,76 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2 class="FIAh2 FIAText center">Create</h2>
 
 @using (Html.BeginForm("Create", "HVIs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>HVI</h4>
-        <hr />
+        <h4 class="FIAh3 FIAText center">HVI</h4>
+        <hr class="FIAText"/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Portrait, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Portrait, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins" })
             <div class="col-md-10">
                 <input type="file" name="file1" id="file1" />
                 @Html.ValidationMessageFor(model => model.Portrait, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.lastName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.lastName, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "FIAText" } })
                 @Html.ValidationMessageFor(model => model.lastName, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.firstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.firstName, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "FIAText" } })
                 @Html.ValidationMessageFor(model => model.firstName, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Alias, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.Alias, new { htmlAttributes = new { @class = "FIAText" } })
                 @Html.ValidationMessageFor(model => model.Alias, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateofBirth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "form-control", @id = "datetime" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.DateofBirth, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.DateofBirth, new { htmlAttributes = new { @class = "FIAText", @id = "datetime" } })
                 @Html.ValidationMessageFor(model => model.DateofBirth, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins center width" })
+            <div class="col-md-10 margin-left">
                 @Html.EJS().RichTextEditorFor(model => model.Bio).Render()
                 @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-10 submit-button cyber-glitch-2">
+                <div class="cyber-button-small">
+                    <input type="submit" value="Create" class="btn btn-default cyber-input FIAText" />
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class = "cyber-button-small blue-button back-button cyber-glitch-2">
+    @Html.ActionLink("Back to List", "Index", new { @class="FIAText" })
 </div>
 
 @section Scripts {

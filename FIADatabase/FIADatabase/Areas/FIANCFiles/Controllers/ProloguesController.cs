@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using FIADatabase.Areas.FIANCFiles.Modules;
 using FIADatabase.Contexts;
 using static System.Net.WebRequestMethods;
@@ -164,6 +165,12 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
             imageIn.InputStream.CopyTo(target);
             byte[] bytes = target.ToArray();
             return bytes;
+        }
+
+        public ActionResult Signout()
+        {
+            FormsAuthentication.SignOut();
+            return Redirect("/Home/Index");
         }
 
         protected override void Dispose(bool disposing)

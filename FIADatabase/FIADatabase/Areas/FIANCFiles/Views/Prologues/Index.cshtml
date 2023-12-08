@@ -14,36 +14,30 @@
 }
 
 
-<h2>Index</h2>
+<h2 class="FIAText FIAh2 center">Index</h2>
 
-<p>
+<p class="cyber-button-small blue-button back-button cyber-glitch-2">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th></th>
-    </tr>
+<table class="table no-border">
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
+            <td class="cyber-button-small wide blue-button back-button">
+                <a href=@Url.Action("Details", new { id = item.prologueId})><p>@Html.DisplayFor(modelItem => item.Title)</p></a>
             </td>
-            <td>
-                @{
-                    if (isLoggedIn)
-                    {
+            @{
+                if (isLoggedIn)
+                {
+                    <td class="cyber-button-small back-button center">
                         @Html.ActionLink("Edit ", "Edit", new { id = item.prologueId })
+                    </td>
+                    <td class="cyber-button-small back-button center" center>
                         @Html.ActionLink("Delete ", "Delete", new { id = item.prologueId })
-                    }
+                    </td>
                 }
-                @Html.ActionLink("Details", "Details", new { id = item.prologueId }) 
-
-            </td>
+            }
         </tr>
     }
 

@@ -4,30 +4,30 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="FIAText FIAh2 center">Index</h2>
 
-<p>
+<p class="cyber-button-small blue-button back-button cyber-glitch-2">
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Username)
-        </th>
-        <th></th>
-    </tr>
+<table class="table no-border">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Username)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="FIAText FIAp center">
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+        </tr>
+        <tr>
+            <td class="cyber-button-small blue-button back-button cyber-glitch-2">
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId })
+            </td>
+        </tr>
+        <tr>
+            <td class="cyber-button-small submit-button back-button cyber-glitch-2">
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+        </tr>
+    }
 
 </table>
