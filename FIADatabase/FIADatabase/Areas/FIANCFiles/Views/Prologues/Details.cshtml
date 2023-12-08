@@ -19,79 +19,78 @@
     bool hasPrev = db.Prologues.Any(s => s.orderNumber == Model.orderNumber - 1);
 }
 
+@{ 
+    int numPics = 0;
+    if (Model.areaMap != null) {
+        numPics += 1;
+    }
+    if (Model.districtMap != null) {
+        numPics += 1;
+    }
+    if (Model.bureauMap != null) {
+        numPics += 1;
+    }
+    if (Model.localMap != null) {
+        numPics += 1;
+    }
+}
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Prologue</h4>
-    <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
+        <div class="FIAText FIAh2 center">
             @Html.DisplayFor(model => model.Title)
-        </dd>
-        @if (Model.areaMap != null)
-        {
-            <dt>@Html.DisplayNameFor(model => model.areaMap)</dt>
-
-            <dd>
-                <img src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" />
-            </dd>
-        }
-
-        @if (Model.districtMap != null)
-        {
-            <dt>@Html.DisplayNameFor(model => model.districtMap)</dt>
-
-            <dd>
-                <img src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" />
-            </dd>
-        }
-        @if (Model.bureauMap != null)
-        {
-            <dt>@Html.DisplayNameFor(model => model.bureauMap)</dt>
-
-            <dd>
-                <img src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" />
-            </dd>
-        }
-        @if (Model.localMap != null)
-        {
-            <dt>@Html.DisplayNameFor(model => model.localMap)</dt>
-
-            <dd>
-                <img src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" />
-            </dd>
-        }
-        <dt>
-            @Html.DisplayNameFor(model => model.Briefing)
-        </dt>
-
+        </div>
         <dd>
+            <div class="slideshow-container">
+                @if (Model.areaMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" />
+                    </div>
+                }
+
+                @if (Model.districtMap != null)
+                {
+                    <div class="mySlides">
+                        <img class ="map" src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" />
+                    </div>
+                }
+                @if (Model.bureauMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" />
+                    </div>
+                }
+                @if (Model.localMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" />
+                    </div>
+                }
+            </div>
+            @if (numPics >= 2)
+            {   <div class="blue-button back-button cyber-glitch-2">
+                    <a class="next cyber-button-small blue-button" onclick="plusSlides(1)">Click to Zoom</a>
+                </div>
+                
+            }
+        </dd>
+        
+        <dd class="FIAText FIAp">
             @Html.Raw(Model.Briefing)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Video)
-        </dt>
-
-        <dd>
+        <dd class="center">
             <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AAR)
-        </dt>
-
-        <dd>
+        <dd class="FIAText FIAp">
             @Html.Raw(Model.AAR)
         </dd>
 
@@ -101,18 +100,62 @@
     @{
         if (isLoggedIn)
         {
-            @Html.ActionLink("Edit ", "Edit", new { id = Model.prologueId })
+            <div class="cyber-button-small back-button center blue-button">
+                @Html.ActionLink("Edit ", "Edit", new { id = Model.prologueId })
+            </div>
+            
         }
         if (hasPrev)
         {
             Prologue prev = db.Prologues.FirstOrDefault(s => s.orderNumber == Model.orderNumber - 1);
-            @Html.ActionLink("Previous ", "Details", new { id = prev.prologueId })
+            <div class="cyber-button-small back-button center blue-button">
+                @Html.ActionLink("Previous", "Details", new { id = prev.prologueId })
+            </div>
         }
         if (hasNext)
         {
             Prologue next = db.Prologues.FirstOrDefault(s => s.orderNumber == Model.orderNumber + 1);
-            @Html.ActionLink("Next", "Details", new { id = next.prologueId })
+            <div class="cyber-button-small back-button center blue-button">
+                @Html.ActionLink("Next", "Details", new { id = next.prologueId })
+            </div>
         }
     }
-    @Html.ActionLink("Back to List", "Index")
+
+    <div class="cyber-button-small back-button center">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
 </p>
+
+@section Scripts 
+{
+    <script type="text/javascript">
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) { 
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < dots.length; i++) { 
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+}

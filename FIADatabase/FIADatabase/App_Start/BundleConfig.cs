@@ -26,6 +26,7 @@ namespace FIADatabase
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/jquery.datetimepicker.css",
+                      "~/Content/cyberpunk-css-main/cyberpunk.css",
                       "~/Content/site.css"));
         }
     }

@@ -11,24 +11,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="shortcut icon" href="~/Content/Images/seal.png" />
+    <title>@ViewBag.Title - FIA Database</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body class="FIAbody">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("FIA Database", "Index", "Home", new { area = "" }, new { @class = "navbar-brand FIAh3" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link FIAp" })</li>
                     @{
                         if (isLoggedIn)
                         {
-                            <li>@Html.ActionLink("Signout", "Signout", "Users")</li>
+                            <li>@Html.ActionLink("Signout", "Signout", "Users", new { @class = "nav-link FIAp" })</li>
                         }
                     }
                 </ul>
@@ -37,9 +39,9 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
+        <hr class="FIAText"/>
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p class="FIAText">&copy; 2077 - FIA Database</p>
         </footer>
     </div>
 
@@ -48,4 +50,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
 
