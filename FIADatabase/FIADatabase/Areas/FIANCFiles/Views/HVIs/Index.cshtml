@@ -12,48 +12,36 @@
     }
 }
 
-<h2>Index</h2>
+<h2 class="FIAText FIAh2 center">Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.lastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.firstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Alias)
-        </th>
-        <th></th>
-    </tr>
+@{
+    if (isLoggedIn)
+    {
+    <p class="cyber-button-small blue-button back-button cyber-glitch-2">
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    }
+}
 
+<table class="table no-border">
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastName)
+            <td class="cyber-button-small wide blue-button back-button">
+                <a href=@Url.Action("Details", new { id = item.HVIId })><p>@Html.DisplayFor(modelItem => item.firstName) "@Html.DisplayFor(modelItem => item.Alias)" @Html.DisplayFor(modelItem => item.lastName)</p></a>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alias)
-            </td>
-            <td>
-                @{
-                    if (isLoggedIn)
-                    {
+
+            @{
+                if (isLoggedIn)
+                {
+                    <td class="cyber-button-small back-button center">
                         @Html.ActionLink("Edit ", "Edit", new { id = item.HVIId })
+                    </td>
+                    <td class="cyber-button-small back-button center" center>
                         @Html.ActionLink("Delete ", "Delete", new { id = item.HVIId })
-                    }
+                    </td>
                 }
-                @Html.ActionLink("Details", "Details", new { id = item.HVIId })
-            </td>
+            }
         </tr>
     }
-
 </table>

@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2 class="FIAh2 FIAText center">Edit</h2>
 
 
 @using (Html.BeginForm())
@@ -12,44 +12,46 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>User</h4>
-        <hr />
+        <h4 class="FIAh3 FIAText center">User</h4>
+        <hr class="FIAText"/>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.UserId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp moreMargins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "FIAText" } })
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "FIAText" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.PasswordFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "FIAText" } })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="col-md-offset-2 col-md-10 submit-button cyber-glitch-2">
+                <div class="cyber-button-small">
+                    <input type="submit" value="Save" class="btn btn-default cyber-input FIAText" />
+                </div>
             </div>
         </div>
     </div>
 }
 
-<div>
+<div class="cyber-button-small blue-button back-button cyber-glitch-2">
     @Html.ActionLink("Back to List", "Index")
 </div>
 

@@ -12,60 +12,29 @@
     }
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>HVI</h4>
-    <hr />
     <dl class="dl-horizontal">
         @if (Model.Portrait != null)
         {
-            <dt>
-                @Html.DisplayNameFor(model => model.Portrait)
-            </dt>
 
             <dd>
-                <img src="data:image;base64, @System.Convert.ToBase64String(Model.Portrait)" />
+                <img class ="portrait" src="data:image;base64, @System.Convert.ToBase64String(Model.Portrait)" />
             </dd>
         }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lastName)
+        <dd class="FIAText FIAh2 center">
+            @Html.DisplayFor(model => model.firstName) "@Html.DisplayFor(model => model.Alias)" @Html.DisplayFor(model => model.lastName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.firstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.firstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Alias)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Alias)
-        </dd>
-
-        <dt>
+        <dt class="FIAText FIAp">
             @Html.DisplayNameFor(model => model.DateofBirth)
         </dt>
 
-        <dd>
+        <dd class="FIAText FIAp">
             @Html.DisplayFor(model => model.DateofBirth)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-
-        <dd>
+        <dd class="FIAText FIAp">
             @Html.Raw(Model.Bio)
         </dd>
 
@@ -75,8 +44,14 @@
     @{
         if (isLoggedIn)
         {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.HVIId })
+            <div class="cyber-button-small back-button center">
+                @Html.ActionLink("Edit ", "Edit", new { id = Model.HVIId })
+            </div>
         }
     }
-    @Html.ActionLink("Back to List", "Index")
+
+    <div class="cyber-button-small blue-button back-button center">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
 </p>
