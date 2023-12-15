@@ -202,3 +202,35 @@ input[type='password'] {
     margin-left: auto;
     margin-right: auto;
 }
+
+.setScale {
+    height: 400px;
+    width: 300px;
+}
+
+.textBox {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+    margin-bottom: 0px;
+}
+
+
+.dropdown-content {
+    display:none;
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    display:block;
+}
+
+.drop:hover .dropdown-content {
+    display:block;
+}
+
+.margin-left-double {
+    margin-left: 20%;
+}

@@ -136,9 +136,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\HVIsController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ProloguesController.cs" />
+    <Compile Include="Areas\FIANCFiles\Controllers\ShardsController.cs" />
     <Compile Include="Areas\FIANCFiles\FIANCFilesAreaRegistration.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\HVI.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\Prologue.cs" />
+    <Compile Include="Areas\FIANCFiles\Modules\Shard.cs" />
     <Compile Include="Areas\FIAUsers\Controllers\UsersController.cs" />
     <Compile Include="Areas\FIAUsers\FIAUsersAreaRegistration.cs" />
     <Compile Include="Areas\FIAUsers\Models\User.cs" />
@@ -151,6 +153,10 @@
     <Compile Include="Migrations\202311191855185_Prologue.cs" />
     <Compile Include="Migrations\202311191855185_Prologue.designer.cs">
       <DependentUpon>202311191855185_Prologue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312082123421_Shards.cs" />
+    <Compile Include="Migrations\202312082123421_Shards.designer.cs">
+      <DependentUpon>202312082123421_Shards.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -205,6 +211,9 @@
     <Content Include="Content\ej2\material3.css" />
     <Content Include="Content\ej2\tailwind-dark.css" />
     <Content Include="Content\ej2\tailwind.css" />
+    <Content Include="Content\Images\Blackwall.jpg" />
+    <Content Include="Content\Images\HVIs.jpg" />
+    <Content Include="Content\Images\NightCity.jpg" />
     <Content Include="Content\Images\Samurai.jpg" />
     <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="favicon.ico" />
@@ -252,6 +261,13 @@
     <Content Include="Content\cyberpunk-css-main\fonts\Cyberpunk.otf" />
     <Content Include="Content\cyberpunk-css-main\fonts\Oxanium.woff2" />
     <Content Include="Content\cyberpunk-css-main\README.md" />
+    <Content Include="Areas\FIANCFiles\Views\Shards\Create.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Shards\Delete.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Shards\Details.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Shards\Edit.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Shards\Index.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Prologues\NCIndex.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Prologues\Main.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -277,7 +293,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -319,6 +334,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202311191855185_Prologue.resx">
       <DependentUpon>202311191855185_Prologue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312082123421_Shards.resx">
+      <DependentUpon>202312082123421_Shards.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

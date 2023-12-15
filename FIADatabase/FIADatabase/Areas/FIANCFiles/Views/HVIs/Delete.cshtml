@@ -18,23 +18,24 @@
             </dd>
         }
 
-        <dd>
+        @if (Model.Alias != null)
+        {
+            <dd class="FIAText FIAh2 center">
+                @Html.DisplayFor(model => model.firstName) "@Html.DisplayFor(model => model.Alias)" @Html.DisplayFor(model => model.lastName)
+            </dd>
+        }
+        else
+        {
+            <dd class="FIAText FIAh2 center">
+                @Html.DisplayFor(model => model.firstName) @Html.DisplayFor(model => model.lastName)
+            </dd>
+        }
 
-        </dd>
-
-        <dd class="FIAText FIAh2 center">
-            @Html.DisplayFor(model => model.firstName) " @Html.DisplayFor(model => model.Alias)" @Html.DisplayFor(model => model.lastName)
-        </dd>
-
-        <dt class="FIAText FIAp">
-            @Html.DisplayNameFor(model => model.DateofBirth)
+        <dt class="FIAText FIAp textBox">
+            @Html.DisplayNameFor(model => model.DateofBirth): @Html.DisplayFor(model => model.DateofBirth)
         </dt>
 
-        <dd class="FIAText FIAp">
-            @Html.DisplayFor(model => model.DateofBirth)
-        </dd>
-
-        <dd class="FIAText FIAp">
+        <dd class="FIAText FIAp textBox">
             @Html.Raw(Model.Bio)
         </dd>
 

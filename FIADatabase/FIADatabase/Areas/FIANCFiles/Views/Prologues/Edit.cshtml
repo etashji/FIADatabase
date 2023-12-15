@@ -86,16 +86,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Briefing, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.Briefing, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+        <div class="col-md-10 textBox">
             @Html.EJS().RichTextEditorFor(model => model.Briefing).Render()
             @Html.ValidationMessageFor(model => model.Briefing, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
-        <div class="col-md-10 cyber-input ac-red fg-black">
+    <div class="form-group centered-div">
+        @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+        <div class="col-md-10 cyber-input ac-red fg-black center">
             @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "FIAText" } })
             @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
         </div>
@@ -107,8 +107,8 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.AAR, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.AAR, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+        <div class="col-md-10 textBox">
             @Html.EJS().RichTextEditorFor(model => model.AAR).Render()
             @Html.ValidationMessageFor(model => model.AAR, "", new { @class = "text-danger" })
         </div>
