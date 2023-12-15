@@ -12,7 +12,7 @@
     }
 }
 
-<h2 class="FIAText FIAh2 center">Index</h2>
+<h2 class="FIAText FIAh2 center">HVIs</h2>
 
 @{
     if (isLoggedIn)
@@ -28,7 +28,16 @@
     {
         <tr>
             <td class="cyber-button-small wide blue-button back-button">
-                <a href=@Url.Action("Details", new { id = item.HVIId })><p>@Html.DisplayFor(modelItem => item.firstName) "@Html.DisplayFor(modelItem => item.Alias)" @Html.DisplayFor(modelItem => item.lastName)</p></a>
+                <a href=@Url.Action("Details", new { id = item.HVIId })>
+                @if (item.Alias != null)
+                {
+                    <p>@Html.DisplayFor(modelItem => item.firstName) "@Html.DisplayFor(modelItem => item.Alias)" @Html.DisplayFor(modelItem => item.lastName)</p>
+                }
+                else
+                {
+                    <p>@Html.DisplayFor(modelItem => item.firstName) @Html.DisplayFor(modelItem => item.lastName)</p>
+                }
+                </a>
             </td>
 
             @{

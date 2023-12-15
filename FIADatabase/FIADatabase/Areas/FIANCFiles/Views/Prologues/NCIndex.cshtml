@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "NCStart";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section class="row" aria-labelledby="aspnetTitle">
+        <p class="lead center FIAText FIAh2">This section contains files documenting significant events that took place in Night City, USA in the year 2077.</p>
+    </section>
+
+    <div class="row">
+        <section class="margin-left-double col-md-4" aria-labelledby="gettingStartedTitle">
+            <div class="card FIAbody" style="width: 18rem;">
+                <img class="card-img-top setScale" src="~/Content/Images/HVIs.jpg" alt="HVIs">
+                <div class="card-body FIAText ">
+                    <h5 class="card-title center FIAh3">High Value Individuals</h5>
+                    <p class="card-text center FIAp">Records of significant Night City Residents.</p>
+                    <a href="@Url.Action("Index", "HVIs", new { Area = "FIANCFiles" })" class="btn btn-primary cyber-button-small cyber-glitch-2">HVIs</a>
+                </div>
+            </div>
+        </section>
+        <section class="col-md-4" aria-labelledby="librariesTitle">
+            <div class="card FIAbody" style="width: 18rem;">
+                <img class="card-img-top setScale" src="~/Content/Images/NightCity.jpg" alt="Night City">
+                <div class="card-body FIAText ">
+                    <h5 class="card-title center FIAh3">Main Entries</h5>
+                    <p class="card-text center FIAp">Records of FIA interactions with Night City in 2077.</p>
+                    <a href="@Url.Action("Index", "Prologues", new { Area = "FIANCFiles" })" class="btn btn-primary cyber-button-small cyber-glitch-2">Main Entries</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+

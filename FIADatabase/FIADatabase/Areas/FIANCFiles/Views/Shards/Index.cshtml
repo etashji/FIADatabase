@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FIADatabase.Areas.FIANCFiles.Modules.Shard>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    bool isLoggedIn = true;
+    if (string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+}
+
+
+<h2 class="FIAText FIAh2 center">Data Shards</h2>
+
+@if (isLoggedIn)
+{
+    <p class="cyber-button-small blue-button back-button cyber-glitch-2">
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+<table class="table no-border">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="cyber-button-small wide blue-button back-button">
+                <a href=@Url.Action("Details", new { id = item.shardId})><p>@Html.DisplayFor(modelItem => item.Title)</p></a>
+            </td>
+            @{
+                if (isLoggedIn)
+                {
+                    <td class="cyber-button-small back-button center">
+                        @Html.ActionLink("Edit ", "Edit", new { id = item.shardId })
+                    </td>
+                    <td class="cyber-button-small back-button center" center>
+                        @Html.ActionLink("Delete ", "Delete", new { id = item.shardId })
+                    </td>
+                }
+            }
+        </tr>
+    }
+
+</table>

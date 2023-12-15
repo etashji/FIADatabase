@@ -79,17 +79,23 @@
                 </div>
                 
             }
+        else {  
+                <a class="next" onclick="plusSlides(1)"></a> 
+             }
         </dd>
         
         <dd class="FIAText FIAp">
             @Html.Raw(Model.Briefing)
         </dd>
 
-        <dd class="center">
-            <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </dd>
-
+        @if (Model.Video != null) 
+        { 
+            <dd class="center">
+                <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </dd>
+        }
+        
         <dd class="FIAText FIAp">
             @Html.Raw(Model.AAR)
         </dd>
