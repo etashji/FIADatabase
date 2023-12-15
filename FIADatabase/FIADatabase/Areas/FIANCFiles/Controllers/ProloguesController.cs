@@ -106,24 +106,25 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
         public ActionResult Edit([Bind(Include = "prologueId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] Prologue prologue, 
             HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
-            if (file1 != null)
-            {
-                prologue.areaMap = ImageToByteArray(file1);
-            }
-            if (file2 != null)
-            {
-                prologue.districtMap = ImageToByteArray(file2);
-            }
-            if (file3 != null)
-            {
-                prologue.bureauMap = ImageToByteArray(file3);
-            }
-            if (file4 != null)
-            {
-                prologue.localMap = ImageToByteArray(file4);
-            }
+            
             if (ModelState.IsValid)
             {
+                if (file1 != null)
+                {
+                    prologue.areaMap = ImageToByteArray(file1);
+                }
+                if (file2 != null)
+                {
+                    prologue.districtMap = ImageToByteArray(file2);
+                }
+                if (file3 != null)
+                {
+                    prologue.bureauMap = ImageToByteArray(file3);
+                }
+                if (file4 != null)
+                {
+                    prologue.localMap = ImageToByteArray(file4);
+                }
                 db.Entry(prologue).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -173,6 +174,14 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
             return Redirect("/Home/Index");
         }
 
+        public ActionResult NCIndex() 
+        {
+            return View();
+        }
+        public ActionResult Main()
+        {
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

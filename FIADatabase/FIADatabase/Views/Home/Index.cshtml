@@ -4,7 +4,6 @@
 
 <main>
     <section class="row" aria-labelledby="aspnetTitle">
-        <h1 class="center FIAText FIAh1" id="title">FIA Database</h1>
         <p class="lead center FIAText FIAh2">Welcome to the official database of the Federal Intelligence Agency.</p>
     </section>
 
@@ -17,7 +16,7 @@
                 <div class="card-body FIAText ">
                     <h5 class="card-title center FIAh3">Night City Files</h5>
                     <p class="card-text center FIAp">Records of FIA interactions with Night City in 2077.</p>
-                    <a href="" class="btn btn-primary cyber-button-small cyber-glitch-2">Night City Files</a>
+                    <a href="@Url.Action("NCIndex", "Prologues", new { Area = "FIANCFiles" })" class="btn btn-primary cyber-button-small cyber-glitch-2">Night City Files</a>
                 </div>
             </div>
         </section>

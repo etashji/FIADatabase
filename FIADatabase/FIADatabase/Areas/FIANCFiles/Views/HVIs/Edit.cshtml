@@ -63,7 +63,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
-            <div class="col-md-10 margin-left">
+            <div class="col-md-10 margin-left textBox">
                 @Html.EJS().RichTextEditorFor(model => model.Bio).Render()
                 @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
             </div>

@@ -28,7 +28,14 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link FIAp" })</li>
+                    <li>@Html.ActionLink("Home", "NCIndex", "Prologues", new { area = "FIANCFIles" }, new { @class = "nav-link FIAp" })</li>
+                    <li>@Html.ActionLink("HVIs", "Index", "HVIs", new { area = "FIANCFIles" }, new { @class = "nav-link FIAp" })</li>
+                    <li class="drop">
+                        @Html.ActionLink("Main Entries", "Main", "Prologues", new { area = "FIANCFiles" }, new { @class = "nav-link FIAp" })
+                        <div class="dropdown-content">
+                            @Html.ActionLink("Prologue", "Index", "Prologues", new { area = "FIANCFiles" }, new { @class = "nav-link FIAp bg-dark" })
+                        </div>
+                    </li>
                     @{
                         if (isLoggedIn)
                         {
@@ -39,6 +46,7 @@
             </div>
         </div>
     </nav>
+    <h1 class="FIAText FIAh1 center">Night City Files</h1>
     <div class="container body-content">
         @RenderBody()
         <hr class="FIAText" />

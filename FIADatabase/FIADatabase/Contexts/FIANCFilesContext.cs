@@ -15,7 +15,8 @@ namespace FIADatabase.Contexts
             base.OnModelCreating(modelBuilder); 
         }
 
-        public System.Data.Entity.DbSet<FIADatabase.Areas.FIANCFiles.Modules.HVI> HVIs { get; set; }
+        public DbSet<HVI> HVIs { get; set; }
+        public DbSet<Shard> Shards { get; set; } 
         public DbSet<Prologue> Prologues { get; set; }
     }
 }

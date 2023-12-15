@@ -86,3 +86,4 @@ F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\bin\Syncfusion.Licensing
 F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\bin\Syncfusion.EJ2.xml
 F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.Migrations.Prologue.resources
 F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.csproj.GenerateResource.cache
+F:\Apps\FIADatabase\FIADatabase\FIADatabase\FIADatabase\obj\Debug\FIADatabase.Migrations.Shards.resources
