@@ -7,13 +7,13 @@ namespace FIADatabase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Prologue : IMigrationMetadata
+    public sealed partial class ActI : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Prologue));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ActI));
         
         string IMigrationMetadata.Id
         {
-            get { return "202311191855185_Prologue"; }
+            get { return "202312170545165_ActI"; }
         }
         
         string IMigrationMetadata.Source

@@ -134,10 +134,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\FIANCFiles\Controllers\ActIsController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\HVIsController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ProloguesController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ShardsController.cs" />
     <Compile Include="Areas\FIANCFiles\FIANCFilesAreaRegistration.cs" />
+    <Compile Include="Areas\FIANCFiles\Modules\ActI.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\HVI.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\Prologue.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\Shard.cs" />
@@ -150,13 +152,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202311191855185_Prologue.cs" />
-    <Compile Include="Migrations\202311191855185_Prologue.designer.cs">
-      <DependentUpon>202311191855185_Prologue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202312082123421_Shards.cs" />
-    <Compile Include="Migrations\202312082123421_Shards.designer.cs">
-      <DependentUpon>202312082123421_Shards.cs</DependentUpon>
+    <Compile Include="Migrations\202312170545165_ActI.cs" />
+    <Compile Include="Migrations\202312170545165_ActI.designer.cs">
+      <DependentUpon>202312170545165_ActI.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -268,6 +266,11 @@
     <Content Include="Areas\FIANCFiles\Views\Shards\Index.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\Prologues\NCIndex.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\Prologues\Main.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\ActIs\Create.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\ActIs\Delete.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\ActIs\Details.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\ActIs\Edit.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\ActIs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -332,11 +335,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202311191855185_Prologue.resx">
-      <DependentUpon>202311191855185_Prologue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202312082123421_Shards.resx">
-      <DependentUpon>202312082123421_Shards.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202312170545165_ActI.resx">
+      <DependentUpon>202312170545165_ActI.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

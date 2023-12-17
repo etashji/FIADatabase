@@ -1,4 +1,4 @@
-﻿@model FIADatabase.Areas.FIANCFiles.Modules.Prologue
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.ActI
 
 @{
     ViewBag.Title = "Edit";
@@ -7,15 +7,15 @@
 
 <h2 class="FIAText FIAh2 center">Edit</h2>
 
-@using (Html.BeginForm("Edit", "Prologues", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "ActIs", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4 class="FIAh3 FIAText center">Prologue</h4>
+        <h4 class="FIAh3 FIAText center">Act I</h4>
         <hr class="FIAText" />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.prologueId)
+        @Html.HiddenFor(model => model.ActIId)
 
         <div class="form-group centered-div">
             @Html.LabelFor(model => model.orderNumber, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
