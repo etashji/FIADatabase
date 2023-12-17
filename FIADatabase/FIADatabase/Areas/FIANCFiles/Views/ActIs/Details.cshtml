@@ -1,0 +1,172 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.ActI
+@using FIADatabase.Areas.FIANCFiles.Modules;
+@using FIADatabase.Contexts;
+
+@functions
+{
+    private FIANCFilesContext db = new FIANCFilesContext();
+
+}
+
+@{
+    bool isLoggedIn = true;
+    if (string.IsNullOrWhiteSpace(User.Identity.Name))
+    {
+        isLoggedIn = false;
+    }
+
+    bool hasNext = db.ActIs.Any(s => s.orderNumber == Model.orderNumber + 1);
+    bool hasPrev = db.ActIs.Any(s => s.orderNumber == Model.orderNumber - 1);
+}
+
+@{
+    int numPics = 0;
+    if (Model.areaMap != null)
+    {
+        numPics += 1;
+    }
+    if (Model.districtMap != null)
+    {
+        numPics += 1;
+    }
+    if (Model.bureauMap != null)
+    {
+        numPics += 1;
+    }
+    if (Model.localMap != null)
+    {
+        numPics += 1;
+    }
+}
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <div class="FIAText FIAh2 center">
+            @Html.DisplayFor(model => model.Title)
+        </div>
+        <dd>
+            <div class="slideshow-container">
+                @if (Model.areaMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" />
+                    </div>
+                }
+
+                @if (Model.districtMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" />
+                    </div>
+                }
+                @if (Model.bureauMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" />
+                    </div>
+                }
+                @if (Model.localMap != null)
+                {
+                    <div class="mySlides">
+                        <img class="map" src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" />
+                    </div>
+                }
+            </div>
+            @if (numPics >= 2)
+            {<div class="blue-button back-button cyber-glitch-2">
+                    <a class="next cyber-button-small blue-button" onclick="plusSlides(1)">Click to Zoom</a>
+                </div>
+
+            }
+            else
+            {
+                <a class="next" onclick="plusSlides(1)"></a>
+            }
+        </dd>
+
+        <dd class="FIAText FIAp">
+            @Html.Raw(Model.Briefing)
+        </dd>
+
+        @if (Model.Video != null)
+        {
+            <dd class="center">
+                <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </dd>
+        }
+
+        <dd class="FIAText FIAp">
+            @Html.Raw(Model.AAR)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{
+        if (isLoggedIn)
+        {
+            <div class="cyber-button-small back-button center blue-button">
+                @Html.ActionLink("Edit ", "Edit", new { id = Model.ActIId })
+            </div>
+
+        }
+        if (hasPrev)
+        {
+            ActI prev = db.ActIs.FirstOrDefault(s => s.orderNumber == Model.orderNumber - 1);
+            <div class="cyber-button-small back-button center blue-button">
+                @Html.ActionLink("Previous", "Details", new { id = prev.ActIId })
+            </div>
+        }
+        if (hasNext)
+        {
+            ActI next = db.ActIs.FirstOrDefault(s => s.orderNumber == Model.orderNumber + 1);
+            <div class="cyber-button-small back-button center blue-button">
+                @Html.ActionLink("Next", "Details", new { id = next.ActIId })
+            </div>
+        }
+    }
+
+    <div class="cyber-button-small back-button center">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+</p>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("mySlides");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < dots.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+}

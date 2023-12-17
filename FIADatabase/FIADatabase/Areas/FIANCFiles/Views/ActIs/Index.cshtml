@@ -1,7 +1,7 @@
-﻿@model IEnumerable<FIADatabase.Areas.FIANCFiles.Modules.Prologue>
+﻿@model IEnumerable<FIADatabase.Areas.FIANCFiles.Modules.ActI>
 
 @{
-    ViewBag.Title = "Prologue";
+    ViewBag.Title = "Act I";
     Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
 }
 
 
-<h2 class="FIAText FIAh2 center">Prologue</h2>
+<h2 class="FIAText FIAh2 center">Act I</h2>
 
 @if (isLoggedIn)
 {
@@ -29,16 +29,16 @@
     {
         <tr>
             <td class="cyber-button-small wide blue-button back-button">
-                <a href=@Url.Action("Details", new { id = item.prologueId})><p>@Html.DisplayFor(modelItem => item.Title)</p></a>
+                <a href=@Url.Action("Details", new { id = item.ActIId})><p>@Html.DisplayFor(modelItem => item.Title)</p></a>
             </td>
             @{
                 if (isLoggedIn)
                 {
                     <td class="cyber-button-small back-button center">
-                        @Html.ActionLink("Edit ", "Edit", new { id = item.prologueId })
+                        @Html.ActionLink("Edit ", "Edit", new { id = item.ActIId })
                     </td>
                     <td class="cyber-button-small back-button center" center>
-                        @Html.ActionLink("Delete ", "Delete", new { id = item.prologueId })
+                        @Html.ActionLink("Delete ", "Delete", new { id = item.ActIId })
                     </td>
                 }
             }
@@ -46,3 +46,4 @@
     }
 
 </table>
+

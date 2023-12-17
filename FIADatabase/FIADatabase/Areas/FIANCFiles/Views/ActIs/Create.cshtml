@@ -1,0 +1,102 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.ActI
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="FIAh2 FIAText center">Create</h2>
+
+@using (Html.BeginForm("Create", "ActIs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="FIAh3 FIAText center">Act I</h4>
+        <hr class="FIAText" />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.orderNumber, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins wide center" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.orderNumber, new { htmlAttributes = new { @class = "FIAText" } })
+                @Html.ValidationMessageFor(model => model.orderNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins center width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "FIAText" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.areaMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins wide center" })
+            <div class="col-md-10">
+                <input type="file" name="file1" id="file1" />
+                @Html.ValidationMessageFor(model => model.areaMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.districtMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins wide center" })
+            <div class="col-md-10">
+                <input type="file" name="file2" id="file2" />
+                @Html.ValidationMessageFor(model => model.districtMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.bureauMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins wide center" })
+            <div class="col-md-10">
+                <input type="file" name="file3" id="file3" />
+                @Html.ValidationMessageFor(model => model.bureauMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.localMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins wide center" })
+            <div class="col-md-10">
+                <input type="file" name="file4" id="file4" />
+                @Html.ValidationMessageFor(model => model.localMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Briefing, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins center width" })
+            <div class="col-md-10 margin-left textBox">
+                @Html.EJS().RichTextEditorFor(model => model.Briefing).Render()
+                @Html.ValidationMessageFor(model => model.Briefing, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins center width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "FIAText" } })
+                @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AAR, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins center width" })
+            <div class="col-md-10 margin-left textBox">
+                @Html.EJS().RichTextEditorFor(model => model.AAR).Render()
+                @Html.ValidationMessageFor(model => model.AAR, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 submit-button cyber-glitch-2">
+                <div class="cyber-button-small">
+                    <input type="submit" value="Create" class="btn btn-default cyber-input FIAText" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="cyber-button-small blue-button back-button cyber-glitch-2">
+    @Html.ActionLink("Back to List", "Index", new { @class = "FIAText" })
+</div>
