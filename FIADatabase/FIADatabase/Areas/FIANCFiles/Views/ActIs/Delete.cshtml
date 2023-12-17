@@ -1,0 +1,98 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.ActI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="FIAText FIAh2 center">Delete</h2>
+
+<h3 class="FIAText FIAh3 center">Are you sure you want to delete this?</h3>
+<div>
+    <h4 class="FIAText FIAh4 center">Act I</h4>
+    <hr class="FIAText" />
+    <dl class="dl-horizontal">
+        <dt class="FIAText FIAp center">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd class="FIAText FIAp center">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        @if (Model.areaMap != null)
+        {
+            <dt class="FIAText FIAh2 center">@Html.DisplayNameFor(model => model.areaMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" class="map" />
+            </dd>
+        }
+
+        @if (Model.districtMap != null)
+        {
+            <dt class="FIAText FIAp center">@Html.DisplayNameFor(model => model.districtMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" class="map" />
+            </dd>
+        }
+        @if (Model.bureauMap != null)
+        {
+            <dt class="FIAText FIAp center">@Html.DisplayNameFor(model => model.bureauMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" class="map" />
+            </dd>
+        }
+        @if (Model.localMap != null)
+        {
+            <dt class="FIAText FIAp center">@Html.DisplayNameFor(model => model.localMap)</dt>
+
+            <dd>
+                <img src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" class="map" />
+            </dd>
+        }
+        <dt class="FIAText FIAp center">
+            @Html.DisplayNameFor(model => model.Briefing)
+        </dt>
+
+        <dd class="FIAText FIAp textBox">
+            @Html.Raw(Model.Briefing)
+        </dd>
+
+        <dt class="FIAText FIAp center">
+            @Html.DisplayNameFor(model => model.Video)
+        </dt>
+
+        <dd class="center">
+            <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </dd>
+
+        <dt class="FIAText FIAp center">
+            @Html.DisplayNameFor(model => model.AAR)
+        </dt>
+
+        <dd class="FIAText FIAp textBox">
+            @Html.Raw(Model.AAR)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 submit-button cyber-glitch-2">
+                <div class="cyber-button-small">
+                    <input type="submit" value="Delete" class="btn btn-default cyber-input FIAText" />
+                </div>
+            </div>
+        </div>
+
+        <div class="cyber-button-small blue-button back-button center">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

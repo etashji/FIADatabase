@@ -3,15 +3,15 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Prologue : DbMigration
+    public partial class ActI : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Prologues",
+                "dbo.ActIs",
                 c => new
                     {
-                        prologueId = c.Int(nullable: false, identity: true),
+                        ActIId = c.Int(nullable: false, identity: true),
                         orderNumber = c.Int(nullable: false),
                         Title = c.String(nullable: false),
                         areaMap = c.Binary(),
@@ -22,13 +22,14 @@
                         Video = c.String(),
                         AAR = c.String(),
                     })
-                .PrimaryKey(t => t.prologueId);
+                .PrimaryKey(t => t.ActIId);
+
             
         }
         
         public override void Down()
         {
-            DropTable("dbo.Prologues");
+            DropTable("dbo.ActIs");
         }
     }
 }

@@ -9,8 +9,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "FIADatabase.Contexts.FIANCFilesContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(FIADatabase.Contexts.FIANCFilesContext context)
