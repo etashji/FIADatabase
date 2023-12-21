@@ -11,78 +11,77 @@ using System.Web.Security;
 using FIADatabase.Areas.FIANCFiles.Modules;
 using FIADatabase.Contexts;
 using FIADatabase.Migrations;
-using ActI = FIADatabase.Areas.FIANCFiles.Modules.ActI;
 
 namespace FIADatabase.Areas.FIANCFiles.Controllers
 {
-    public class ActIsController : Controller
+    public class InterludesController : Controller
     {
         private FIANCFilesContext db = new FIANCFilesContext();
 
-        // GET: FIANCFiles/ActIs
+        // GET: FIANCFiles/Interludes
         public ActionResult Index()
         {
-            return View(db.ActIs.OrderBy(s => s.orderNumber).ToList());
+            return View(db.Interludes.OrderBy(s => s.orderNumber).ToList());
         }
 
-        // GET: FIANCFiles/ActIs/Details/5
+        // GET: FIANCFiles/Interludes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActI actI = db.ActIs.Find(id);
-            if (actI == null)
+            Interlude interlude = db.Interludes.Find(id);
+            if (interlude == null)
             {
                 return HttpNotFound();
             }
-            return View(actI);
+            return View(interlude);
         }
 
-        // GET: FIANCFiles/ActIs/Create
+        // GET: FIANCFiles/Interludes/Create
         [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: FIANCFiles/ActIs/Create
+        // POST: FIANCFiles/Interludes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ActIId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] ActI actI,
+        public ActionResult Create([Bind(Include = "interludeId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] Interlude interlude,
             HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
             if (file1 != null)
             {
-                actI.areaMap = ImageToByteArray(file1);
+                interlude.areaMap = ImageToByteArray(file1);
             }
             if (file2 != null)
             {
-                actI.districtMap = ImageToByteArray(file2);
+                interlude.districtMap = ImageToByteArray(file2);
             }
             if (file3 != null)
             {
-                actI.bureauMap = ImageToByteArray(file3);
+                interlude.bureauMap = ImageToByteArray(file3);
             }
             if (file4 != null)
             {
-                actI.localMap = ImageToByteArray(file4);
+                interlude.localMap = ImageToByteArray(file4);
             }
             if (ModelState.IsValid)
             {
-                db.ActIs.Add(actI);
+                db.Interludes.Add(interlude);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(actI);
+            return View(interlude);
         }
 
-        // GET: FIANCFiles/ActIs/Edit/5
+        // GET: FIANCFiles/Interludes/Edit/5
         [Authorize]
         public ActionResult Edit(int? id)
         {
@@ -90,49 +89,49 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActI actI = db.ActIs.Find(id);
-            if (actI == null)
+            Interlude interlude = db.Interludes.Find(id);
+            if (interlude == null)
             {
                 return HttpNotFound();
             }
-            return View(actI);
+            return View(interlude);
         }
 
-        // POST: FIANCFiles/ActIs/Edit/5
+        // POST: FIANCFiles/Interludes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActIId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] ActI actI,
+        public ActionResult Edit([Bind(Include = "interludeId,orderNumber,Title,areaMap,districtMap,bureauMap,localMap,Briefing,Video,AAR")] Interlude interlude,
             HttpPostedFileBase file1, HttpPostedFileBase file2, HttpPostedFileBase file3, HttpPostedFileBase file4)
         {
+            if (file1 != null)
+            {
+                interlude.areaMap = ImageToByteArray(file1);
+            }
+            if (file2 != null)
+            {
+                interlude.districtMap = ImageToByteArray(file2);
+            }
+            if (file3 != null)
+            {
+                interlude.bureauMap = ImageToByteArray(file3);
+            }
+            if (file4 != null)
+            {
+                interlude.localMap = ImageToByteArray(file4);
+            }
             if (ModelState.IsValid)
             {
-                if (file1 != null)
-                {
-                    actI.areaMap = ImageToByteArray(file1);
-                }
-                if (file2 != null)
-                {
-                    actI.districtMap = ImageToByteArray(file2);
-                }
-                if (file3 != null)
-                {
-                    actI.bureauMap = ImageToByteArray(file3);
-                }
-                if (file4 != null)
-                {
-                    actI.localMap = ImageToByteArray(file4);
-                }
-                db.Entry(actI).State = EntityState.Modified;
+                db.Entry(interlude).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(actI);
+            return View(interlude);
         }
 
-        // GET: FIANCFiles/ActIs/Delete/5
+        // GET: FIANCFiles/Interludes/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
         {
@@ -140,22 +139,22 @@ namespace FIADatabase.Areas.FIANCFiles.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActI actI = db.ActIs.Find(id);
-            if (actI == null)
+            Interlude interlude = db.Interludes.Find(id);
+            if (interlude == null)
             {
                 return HttpNotFound();
             }
-            return View(actI);
+            return View(interlude);
         }
 
-        // POST: FIANCFiles/ActIs/Delete/5
+        // POST: FIANCFiles/Interludes/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            ActI actI = db.ActIs.Find(id);
-            db.ActIs.Remove(actI);
+            Interlude interlude = db.Interludes.Find(id);
+            db.Interludes.Remove(interlude);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

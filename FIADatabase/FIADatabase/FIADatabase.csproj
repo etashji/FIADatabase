@@ -136,12 +136,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ActIsController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\HVIsController.cs" />
+    <Compile Include="Areas\FIANCFiles\Controllers\InterludesController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\MainController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ProloguesController.cs" />
-    <Compile Include="Areas\FIANCFiles\Controllers\ShardsController.cs" />
     <Compile Include="Areas\FIANCFiles\FIANCFilesAreaRegistration.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\ActI.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\HVI.cs" />
+    <Compile Include="Areas\FIANCFiles\Modules\Interlude.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\Prologue.cs" />
     <Compile Include="Areas\FIANCFiles\Modules\Shard.cs" />
     <Compile Include="Areas\FIAUsers\Controllers\UsersController.cs" />
@@ -156,6 +157,10 @@
     <Compile Include="Migrations\202312170545165_ActI.cs" />
     <Compile Include="Migrations\202312170545165_ActI.designer.cs">
       <DependentUpon>202312170545165_ActI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202312210340161_Interludes.cs" />
+    <Compile Include="Migrations\202312210340161_Interludes.designer.cs">
+      <DependentUpon>202312210340161_Interludes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -260,11 +265,6 @@
     <Content Include="Content\cyberpunk-css-main\fonts\Cyberpunk.otf" />
     <Content Include="Content\cyberpunk-css-main\fonts\Oxanium.woff2" />
     <Content Include="Content\cyberpunk-css-main\README.md" />
-    <Content Include="Areas\FIANCFiles\Views\Shards\Create.cshtml" />
-    <Content Include="Areas\FIANCFiles\Views\Shards\Delete.cshtml" />
-    <Content Include="Areas\FIANCFiles\Views\Shards\Details.cshtml" />
-    <Content Include="Areas\FIANCFiles\Views\Shards\Edit.cshtml" />
-    <Content Include="Areas\FIANCFiles\Views\Shards\Index.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\Main\NCIndex.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\Main\Main.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\ActIs\Create.cshtml" />
@@ -272,6 +272,11 @@
     <Content Include="Areas\FIANCFiles\Views\ActIs\Details.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\ActIs\Edit.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\ActIs\Index.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Interludes\Create.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Interludes\Delete.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Interludes\Details.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Interludes\Edit.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Interludes\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ej2\ej2.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -338,6 +343,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202312170545165_ActI.resx">
       <DependentUpon>202312170545165_ActI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202312210340161_Interludes.resx">
+      <DependentUpon>202312210340161_Interludes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
