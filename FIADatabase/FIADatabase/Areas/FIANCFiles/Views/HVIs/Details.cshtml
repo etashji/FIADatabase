@@ -1,7 +1,14 @@
 ﻿@model FIADatabase.Areas.FIANCFiles.Modules.HVI
 
-@{
-    ViewBag.Title = "Details";
+@if (Model.Alias != null)
+{
+
+    ViewBag.Title = Model.firstName + " \"" + Model.Alias + "\" " + Model.lastName;
+
+}
+else
+{
+    ViewBag.Title = Model.firstName + " " + Model.lastName;
 }
 
 @{

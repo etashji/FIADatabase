@@ -1,0 +1,129 @@
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.Interlude
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="FIAText FIAh2 center">Edit</h2>
+
+@using (Html.BeginForm("Edit", "Interludes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="FIAh3 FIAText center">Interlude</h4>
+        <hr class="FIAText" />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.interludeId)
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.orderNumber, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.orderNumber, new { htmlAttributes = new { @class = "FIAText" } })
+                @Html.ValidationMessageFor(model => model.orderNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width" })
+            <div class="col-md-10 cyber-input ac-red fg-black">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "FIAText" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.areaMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10">
+                @if (Model.areaMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.areaMap)" class="map" />
+                }
+                <input type="file" name="file1" id="file1" class="center-input" />
+                @Html.HiddenFor(model => model.areaMap)
+                @Html.ValidationMessageFor(model => model.areaMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.districtMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10">
+                @if (Model.districtMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.districtMap)" class="map" />
+                }
+                <input type="file" name="file2" id="file2" class="center-input" />
+                @Html.HiddenFor(model => model.districtMap)
+                @Html.ValidationMessageFor(model => model.districtMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bureauMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10">
+                @if (Model.bureauMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.bureauMap)" class="map" />
+                }
+                <input type="file" name="file3" id="file3" class="center-input" />
+                @Html.HiddenFor(model => model.bureauMap)
+                @Html.ValidationMessageFor(model => model.bureauMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.localMap, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10">
+                @if (Model.localMap != null)
+                {
+                    <img src="data:image;base64, @System.Convert.ToBase64String(Model.localMap)" class="map" />
+                }
+                <input type="file" name="file4" id="file4" class="center-input" />
+                @Html.HiddenFor(model => model.localMap)
+                @Html.ValidationMessageFor(model => model.localMap, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Briefing, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10 textBox">
+                @Html.EJS().RichTextEditorFor(model => model.Briefing).Render()
+                @Html.ValidationMessageFor(model => model.Briefing, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group centered-div">
+            @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10 cyber-input ac-red fg-black center">
+                @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "FIAText" } })
+                @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+            </div>
+            @if (Model.Video != null)
+            {
+                <iframe crossorigin='anonymous' width="560" height="315" src="@Html.DisplayFor(model => model.Video)" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            }
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AAR, htmlAttributes: new { @class = "control-label col-md-2 FIAText FIAp margins width center" })
+            <div class="col-md-10 textBox">
+                @Html.EJS().RichTextEditorFor(model => model.AAR).Render()
+                @Html.ValidationMessageFor(model => model.AAR, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10 submit-button cyber-glitch-2">
+                <div class="cyber-button-small">
+                    <input type="submit" value="Save" class="btn btn-default cyber-input FIAText" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="cyber-button-small blue-button back-button cyber-glitch-2">
+    @Html.ActionLink("Back to List", "Index", new { @class = "FIAText" })
+</div>

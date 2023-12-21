@@ -19,5 +19,6 @@ namespace FIADatabase.Contexts
         public DbSet<Shard> Shards { get; set; } 
         public DbSet<Prologue> Prologues { get; set; }
         public DbSet<ActI> ActIs { get; set; }
+        public DbSet<Interlude> Interludes { get; set; }
     }
 }
