@@ -1,4 +1,4 @@
-﻿@model FIADatabase.Areas.FIANCFiles.Modules.ActI
+﻿@model FIADatabase.Areas.FIANCFiles.Modules.Interlude
 @using FIADatabase.Areas.FIANCFiles.Modules;
 @using FIADatabase.Contexts;
 
@@ -15,8 +15,8 @@
         isLoggedIn = false;
     }
 
-    bool hasNext = db.ActIs.Any(s => s.orderNumber == Model.orderNumber + 1);
-    bool hasPrev = db.ActIs.Any(s => s.orderNumber == Model.orderNumber - 1);
+    bool hasNext = db.Interludes.Any(s => s.orderNumber == Model.orderNumber + 1);
+    bool hasPrev = db.Interludes.Any(s => s.orderNumber == Model.orderNumber - 1);
 }
 
 @{
@@ -112,22 +112,22 @@
         if (isLoggedIn)
         {
             <div class="cyber-button-small back-button center blue-button">
-                @Html.ActionLink("Edit ", "Edit", new { id = Model.ActIId })
+                @Html.ActionLink("Edit ", "Edit", new { id = Model.interludeId })
             </div>
 
         }
         if (hasPrev)
         {
-            ActI prev = db.ActIs.FirstOrDefault(s => s.orderNumber == Model.orderNumber - 1);
+            Interlude prev = db.Interludes.FirstOrDefault(s => s.orderNumber == Model.orderNumber - 1);
             <div class="cyber-button-small back-button center blue-button">
-                @Html.ActionLink("Previous", "Details", new { id = prev.ActIId })
+                @Html.ActionLink("Previous", "Details", new { id = prev.interludeId })
             </div>
         }
         if (hasNext)
         {
-            ActI next = db.ActIs.FirstOrDefault(s => s.orderNumber == Model.orderNumber + 1);
+            Interlude next = db.Interludes.FirstOrDefault(s => s.orderNumber == Model.orderNumber + 1);
             <div class="cyber-button-small back-button center blue-button">
-                @Html.ActionLink("Next", "Details", new { id = next.ActIId })
+                @Html.ActionLink("Next", "Details", new { id = next.interludeId })
             </div>
         }
     }

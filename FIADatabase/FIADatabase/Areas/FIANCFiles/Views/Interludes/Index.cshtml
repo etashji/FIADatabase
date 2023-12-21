@@ -1,7 +1,7 @@
-﻿@model IEnumerable<FIADatabase.Areas.FIANCFiles.Modules.Shard>
+﻿@model IEnumerable<FIADatabase.Areas.FIANCFiles.Modules.Interlude>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Interlude";
     Layout = "~/Areas/FIANCFiles/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,7 +14,7 @@
 }
 
 
-<h2 class="FIAText FIAh2 center">Data Shards</h2>
+<h2 class="FIAText FIAh2 center">Interlude</h2>
 
 @if (isLoggedIn)
 {
@@ -29,16 +29,16 @@
     {
         <tr>
             <td class="cyber-button-small wide blue-button back-button">
-                <a href=@Url.Action("Details", new { id = item.shardId})><p>@Html.DisplayFor(modelItem => item.Title)</p></a>
+                <a href=@Url.Action("Details", new { id = item.interludeId})><p>@Html.DisplayFor(modelItem => item.Title)</p></a>
             </td>
             @{
                 if (isLoggedIn)
                 {
                     <td class="cyber-button-small back-button center">
-                        @Html.ActionLink("Edit ", "Edit", new { id = item.shardId })
+                        @Html.ActionLink("Edit ", "Edit", new { id = item.interludeId })
                     </td>
                     <td class="cyber-button-small back-button center" center>
-                        @Html.ActionLink("Delete ", "Delete", new { id = item.shardId })
+                        @Html.ActionLink("Delete ", "Delete", new { id = item.interludeId })
                     </td>
                 }
             }
