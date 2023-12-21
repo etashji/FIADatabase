@@ -136,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ActIsController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\HVIsController.cs" />
+    <Compile Include="Areas\FIANCFiles\Controllers\MainController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ProloguesController.cs" />
     <Compile Include="Areas\FIANCFiles\Controllers\ShardsController.cs" />
     <Compile Include="Areas\FIANCFiles\FIANCFilesAreaRegistration.cs" />
@@ -264,8 +265,8 @@
     <Content Include="Areas\FIANCFiles\Views\Shards\Details.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\Shards\Edit.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\Shards\Index.cshtml" />
-    <Content Include="Areas\FIANCFiles\Views\Prologues\NCIndex.cshtml" />
-    <Content Include="Areas\FIANCFiles\Views\Prologues\Main.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Main\NCIndex.cshtml" />
+    <Content Include="Areas\FIANCFiles\Views\Main\Main.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\ActIs\Create.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\ActIs\Delete.cshtml" />
     <Content Include="Areas\FIANCFiles\Views\ActIs\Details.cshtml" />
